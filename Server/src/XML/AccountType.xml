@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accounttypes xmlns="http://videobib.wba2.de/xml/accounttypes">
+    <accounttype>
+        <nr></nr>
+        <type></type>
+        <costs></costs>
+        <videopm></videopm>
+    </accounttype>
+</accounttypes>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/User"
+    xmlns:tns="http://xml.netbeans.org/schema/User"
+    elementFormDefault="qualified">
+<xsd:element name="users">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="user">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="idnr" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+              <xsd:element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+              <xsd:element name="email" type="xsd:string" minOccurs="1" maxOccurs="3"/>
+              <xsd:element name="password" minOccurs="1" maxOccurs="1">
+                <xsd:complexType>
+                  <xsd:attribute name="minchars" type="xsd:int" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="age">
+                <xsd:complexType>
+                  <xsd:attribute name="min" type="xsd:int" />
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="payment">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="bankaccount">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="bank" type="xsd:string" />
+                          <xsd:element name="accountnr" type="xsd:string" />
+                          <xsd:element name="iban" type="xsd:string" />
+                          <xsd:element name="blz" type="xsd:string" />
+                          <xsd:element name="owner" type="xsd:string" />
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="accounts">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="account">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="nr" type="xsd:string" />
+                          <xsd:element name="type" type="xsd:string" />
+                          <xsd:element name="active" type="xsd:string" />
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

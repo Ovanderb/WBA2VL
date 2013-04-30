@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<news xmlns="http://videobib.wba2.de/xml/news">
+    <new>
+        <nr></nr>
+        <date></date>
+        <movies>
+            <movie>
+                <id></id>
+                <date></date>
+                <name></name>
+                <image></image>
+                <discription></discription>
+            </movie>
+        </movies>
+        <message></message>
+    </new>
+</news>

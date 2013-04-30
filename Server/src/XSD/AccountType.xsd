@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/AccountType"
+    xmlns:tns="http://xml.netbeans.org/schema/AccountType"
+    elementFormDefault="qualified">
+<xsd:element name="accounttypes">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="accounttype">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="nr" type="xsd:string" />
+              <xsd:element name="type" type="xsd:string" />
+              <xsd:element name="costs" type="xsd:string" />
+              <xsd:element name="videopm" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

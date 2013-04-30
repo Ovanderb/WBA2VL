@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users xmlns="http://videobib.wba2.de/xml/user">
+    <user>
+        <idnr></idnr>
+        <name></name>
+        <email></email>
+        <password minchars="8"></password>
+        <age min="16"></age>
+        <payment>
+            <bankaccount>
+                <bank></bank>
+                <accountnr></accountnr>
+                <iban></iban>
+                <blz></blz>
+                <owner></owner>
+            </bankaccount>
+        </payment>
+        <accounts>
+            <account>
+                <nr></nr>
+                <type></type>
+                <active></active>
+            </account>
+        </accounts>
+    </user>
+</users>
