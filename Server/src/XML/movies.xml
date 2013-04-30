@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movies xmlns="http://videobib.wba2.de/xml/movies">
+  <movie id="" name="" length="" format="" regiseur="" image="">
+    <date publication="" avaible="" return=""/>
+    <discription></discription>
+    <actors>
+      <actor prename="" surname=""/>
+    </actors>
+    <generes>
+      <genere name=""/>
+    </generes>
+  </movie>
+</movies>
