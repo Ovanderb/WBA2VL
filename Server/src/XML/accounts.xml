@@ -2,15 +2,12 @@
 <accounts xmlns="http://videobib.wba2.de/xml/user">
   <account>
     <users>
-      <user id="" name="" mail="" age="" password="">
+      <user id="" name="" mail="" age="" password="" date="">
         <genre id=""/>
       </user>
     </users>
     <payments>
       <bank name="" account="" code="" owner=""/>
     </payments>
-    <history>
-      <movie id="" date=""/>
-    </history>
   </account>
 </acctouns>
