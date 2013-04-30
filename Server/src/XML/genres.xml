@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genres xmlns="http://videobib.wba2.de/xml/genres">
-  <genre name=""/>
+  <genre id="" name=""/>
 </genres>
