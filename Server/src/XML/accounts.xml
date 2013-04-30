@@ -9,5 +9,8 @@
     <payments>
       <bank name="" account="" code="" owner=""/>
     </payments>
+    <history>
+      <movie id="" date=""/>
+    </history>
   </account>
 </acctouns>
