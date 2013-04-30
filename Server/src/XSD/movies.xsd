@@ -8,41 +8,41 @@
             <xsd:sequence>
               <xsd:element name="date">
                 <xsd:complexType>
-                  <xsd:attribute name="publication" type="xsd:string" />
-                  <xsd:attribute name="avaible" type="xsd:string" />
-                  <xsd:attribute name="return" type="xsd:string" />
+                  <xsd:attribute name="publication" type="xsd:date" minOccurs="1" maxOccurs="1"/>
+                  <xsd:attribute name="avaible" type="xsd:date" minOccurs="0" maxOccurs="1"/>
+                  <xsd:attribute name="return" type="xsd:date" minOccurs="0" maxOccurs="1"/>
                 </xsd:complexType>
               </xsd:element>
-              <xsd:element name="discription" type="xsd:string" />
-              <xsd:element name="actors">
+              <xsd:element name="discription" type="xsd:string"  minOccurs="1" maxOccurs="1"/>
+              <xsd:element name="actors" minOccurs="1" maxOccurs="1">
                 <xsd:complexType>
                   <xsd:sequence>
-                    <xsd:element name="actor">
+                    <xsd:element name="actor" minOccurs="1" maxOccurs="unbound">
                       <xsd:complexType>
-                        <xsd:attribute name="id" type="xsd:string" />
+                        <xsd:attribute name="id" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
                       </xsd:complexType>
                     </xsd:element>
                   </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
-              <xsd:element name="generes">
+              <xsd:element name="generes" minOccurs="1" maxOccurs="1">
                 <xsd:complexType>
                   <xsd:sequence>
-                    <xsd:element name="genere">
+                    <xsd:element name="genere" minOccurs="1" maxOccurs="unbound">
                       <xsd:complexType>
-                        <xsd:attribute name="id" type="xsd:string" />
+                        <xsd:attribute name="id" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
                       </xsd:complexType>
                     </xsd:element>
                   </xsd:sequence>
                 </xsd:complexType>
               </xsd:element>
             </xsd:sequence>
-            <xsd:attribute name="name" type="xsd:string" />
-            <xsd:attribute name="length" type="xsd:string" />
-            <xsd:attribute name="format" type="xsd:string" />
-            <xsd:attribute name="regiseur" type="xsd:string" />
-            <xsd:attribute name="image" type="xsd:string" />
-            <xsd:attribute name="new" type="xsd:string" />
+            <xsd:attribute name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:attribute name="length" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+            <xsd:attribute name="format" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+            <xsd:attribute name="regiseur" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:attribute name="image" type="xsd:anyURI" minOccurs="0" maxOccurs="1" />
+            <xsd:attribute name="new" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>

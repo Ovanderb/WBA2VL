@@ -3,27 +3,27 @@
   <xsd:element name="accounts">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="account">
+        <xsd:element name="account" minOccurs="1" maxOccurs="unbound">
           <xsd:complexType>
             <xsd:sequence>
               <xsd:element name="users">
                 <xsd:complexType>
                   <xsd:sequence>
-                    <xsd:element name="user">
+                    <xsd:element name="user" minOccurs="1" maxOccurs="10">
                       <xsd:complexType>
                         <xsd:sequence>
-                          <xsd:element name="genre">
+                          <xsd:element name="genre" minOccurs="0" maxOccurs="unbound">
                             <xsd:complexType>
-                              <xsd:attribute name="id" type="xsd:string" />
+                              <xsd:attribute name="id" type="xsd:string" minOccurs="1" maxOccurs="unbound"/>
                             </xsd:complexType>
                           </xsd:element>
                         </xsd:sequence>
-                        <xsd:attribute name="id" type="xsd:string" />
-                        <xsd:attribute name="name" type="xsd:string" />
-                        <xsd:attribute name="mail" type="xsd:string" />
-                        <xsd:attribute name="age" type="xsd:string" />
-                        <xsd:attribute name="password" type="xsd:string" />
-                        <xsd:attribute name="date" type="xsd:string" />
+                        <xsd:attribute name="id" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                        <xsd:attribute name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                        <xsd:attribute name="mail" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                        <xsd:attribute name="age" type="xsd:integer" minOccurs="1" maxOccurs="1"/>
+                        <xsd:attribute name="password" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+                        <xsd:attribute name="date" type="xsd:date" minOccurs="1" maxOccurs="1"/>
                       </xsd:complexType>
                     </xsd:element>
                   </xsd:sequence>
@@ -32,12 +32,12 @@
               <xsd:element name="payments">
                 <xsd:complexType>
                   <xsd:sequence>
-                    <xsd:element name="bank">
+                    <xsd:element name="bank" minOccurs="1" maxOccurs="unbound">
                       <xsd:complexType>
-                        <xsd:attribute name="name" type="xsd:string" />
-                        <xsd:attribute name="account" type="xsd:string" />
-                        <xsd:attribute name="code" type="xsd:string" />
-                        <xsd:attribute name="owner" type="xsd:string" />
+                        <xsd:attribute name="name" type="xsd:string" minOccurs="1"/>
+                        <xsd:attribute name="account" type="xsd:integer" minOccurs="1"/>
+                        <xsd:attribute name="code" type="xsd:integer" minOccurs="1"/>
+                        <xsd:attribute name="owner" type="xsd:string" minOccurs="1"/>
                       </xsd:complexType>
                     </xsd:element>
                   </xsd:sequence>
