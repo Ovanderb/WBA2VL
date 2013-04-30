@@ -7,7 +7,7 @@
       <actor prename="" surname=""/>
     </actors>
     <generes>
-      <genere name=""/>
+      <genere id=""/>
     </generes>
   </movie>
 </movies>
