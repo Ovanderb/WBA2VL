@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="actors">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="actor">
+          <xsd:complexType>
+            <xsd:attribute name="name" type="xsd:string" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
