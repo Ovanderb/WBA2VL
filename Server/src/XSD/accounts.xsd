@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-16"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="accounts">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="account">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="users">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="user">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="genre">
+                            <xsd:complexType>
+                              <xsd:attribute name="id" type="xsd:string" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                        <xsd:attribute name="id" type="xsd:string" />
+                        <xsd:attribute name="name" type="xsd:string" />
+                        <xsd:attribute name="mail" type="xsd:string" />
+                        <xsd:attribute name="age" type="xsd:string" />
+                        <xsd:attribute name="password" type="xsd:string" />
+                        <xsd:attribute name="date" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element name="payments">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="bank">
+                      <xsd:complexType>
+                        <xsd:attribute name="name" type="xsd:string" />
+                        <xsd:attribute name="account" type="xsd:string" />
+                        <xsd:attribute name="code" type="xsd:string" />
+                        <xsd:attribute name="owner" type="xsd:string" />
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
