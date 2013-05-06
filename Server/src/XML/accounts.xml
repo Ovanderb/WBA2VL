@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <accounts xmlns="http://videobib.wba2.de/xml/user">
-  <account>
-    <users>
-      <user id="" name="" mail="" age="" password="" date="">
-        <genres></genres>
-        <wishes></wishes>
-      </user>
-    </users>
-    <payments>
-      <bank name="" account="" code="" owner=""/>
-    </payments>
-    <bills>
-      <bill date="">
-        <movie name="" price=""/>
-      </bill>
-    </bills>
+  <account name="" mail="" age="" password="" date="">
+    <genres></genres>
+    <wishes></wishes>
   </account>
 </accounts>
