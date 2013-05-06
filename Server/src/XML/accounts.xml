@@ -3,11 +3,17 @@
   <account>
     <users>
       <user id="" name="" mail="" age="" password="" date="">
-        <genre id=""/>
+        <genres></genres>
+        <wishes></wishes>
       </user>
     </users>
     <payments>
       <bank name="" account="" code="" owner=""/>
     </payments>
+    <bills>
+      <bill date="">
+        <movie name="" price=""/>
+      </bill>
+    </bills>
   </account>
 </accounts>
