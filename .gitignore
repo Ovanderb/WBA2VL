@@ -5,3 +5,4 @@
 *.war
 *.ear
 /Server/nbproject/private/
+/AdminClient/nbproject/private/
