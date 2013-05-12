@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <message>
-    <movie id="1" name="foo" date="01.01.2000" image="http://w.w.de" link="http://w.w.de">
+    <movie id="1" name="foo" date="2000-01-01+01:00" image="http://w.w.de" link="http://w.w.de">
         <discription>Lorem Ipsum</discription>
     </movie>
     <movie id="2" name="bar" image="http://w.w.de" link="http://w.w.de">

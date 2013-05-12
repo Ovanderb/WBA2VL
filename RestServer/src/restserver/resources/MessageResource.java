@@ -3,18 +3,15 @@ package restserver.resources;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.text.ParseException;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import restserver.MyMarshal;
-import restserver.schema.actors.Actors;
 import restserver.schema.messages.*;
 
-@Path("messages")
+@Path("message")
 public class MessageResource {
-    private FileOutputStream f;
     private MyMarshal m;
 
     public MessageResource() throws JAXBException {
@@ -35,27 +32,27 @@ public class MessageResource {
         Message newobj = this.m.umes(s);
         existingobj.getMovie().add(newobj.getMovie().get(0));
         this.m.mmes(existingobj);
-        return Response.status(201).build();
+        return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Message.Movie messageGet(@PathParam("id") String id) throws JAXBException {
+    public Response messageGet(@PathParam("id") Integer id) throws JAXBException {
         Message a = this.m.umes();
         for (Message.Movie o: a.getMovie()){
-            if(o.getName().equals(id)){
-                return o;
+            if(o.getId().equals(id)){
+                return Response.status(Response.Status.OK).entity(o).build();
             }
         }
-        return null;
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @POST
-    @Path("{message}")
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public Response messagePost(
-            @PathParam("id") int id,
+            @PathParam("id") Integer id,
             @QueryParam("name") String name,
             @QueryParam("date") String date,
             @QueryParam("img") String img,
