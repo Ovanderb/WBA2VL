@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<bills xmlns="http://videobib.wba2.de/xml/user">
-  <bill id="" cash="" bank="" account="" code="" owner="">
-    <movie name="" price=""/>
-  </bill>
-</bills>

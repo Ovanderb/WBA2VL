@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<accounts>
-  <account name="Foo" mail="foo@bar.de" password="12345" age="01.01.1900" date="01.01.2000">
-    <genres>Action</genres>
-    <wishes>Rambo</wishes>
-  </account>
-</accounts>
