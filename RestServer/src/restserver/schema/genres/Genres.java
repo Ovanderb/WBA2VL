@@ -2,18 +2,17 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // �nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.04.30 um 11:50:40 PM CEST 
+// Generiert: 2013.05.07 um 07:21:36 PM CEST 
 //
 
 
-package jaxb.genres;
+package restserver.schema.genres;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -28,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="genre" maxOccurs="unbounded">
+ *         &lt;element name="genre" maxOccurs="unbounded" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -52,7 +51,6 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "genres")
 public class Genres {
 
-    @XmlElement(required = true)
     protected List<Genres.Genre> genre;
 
     /**
@@ -103,6 +101,7 @@ public class Genres {
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlRootElement
     @XmlType(name = "")
     public static class Genre {
 

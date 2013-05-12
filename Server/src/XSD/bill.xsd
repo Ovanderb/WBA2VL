@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="bills">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="bill" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="movie" minOccurs="1" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:attribute name="name" type="xsd:string" />
+                  <xsd:attribute name="price" type="xsd:float" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:int" />
+            <xsd:attribute name="cash" type="xsd:boolean" />
+            <xsd:attribute name="bank" type="xsd:boolean" />
+            <xsd:attribute name="account" type="xsd:int" />
+            <xsd:attribute name="code" type="xsd:string" />
+            <xsd:attribute name="owner" type="xsd:string" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

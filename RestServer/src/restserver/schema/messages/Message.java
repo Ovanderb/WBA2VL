@@ -2,13 +2,12 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // �nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.04.30 um 11:50:54 PM CEST 
+// Generiert: 2013.05.07 um 07:22:12 PM CEST 
 //
 
 
-package jaxb.message;
+package restserver.schema.messages;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -31,14 +30,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="movie" maxOccurs="unbounded">
+ *         &lt;element name="movie" maxOccurs="unbounded" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
  *                   &lt;element name="discription" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *                 &lt;/sequence>
- *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}integer" />
+ *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}int" />
  *                 &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="date" type="{http://www.w3.org/2001/XMLSchema}date" />
  *                 &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
@@ -62,7 +61,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlRootElement(name = "message")
 public class Message {
 
-    @XmlElement(required = true)
     protected List<Message.Movie> movie;
 
     /**
@@ -107,7 +105,7 @@ public class Message {
      *       &lt;sequence>
      *         &lt;element name="discription" type="{http://www.w3.org/2001/XMLSchema}string"/>
      *       &lt;/sequence>
-     *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}integer" />
+     *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}int" />
      *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="date" type="{http://www.w3.org/2001/XMLSchema}date" />
      *       &lt;attribute name="image" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
@@ -120,6 +118,7 @@ public class Message {
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlRootElement
     @XmlType(name = "", propOrder = {
         "discription"
     })
@@ -128,7 +127,7 @@ public class Message {
         @XmlElement(required = true)
         protected String discription;
         @XmlAttribute(name = "id")
-        protected BigInteger id;
+        protected Integer id;
         @XmlAttribute(name = "name")
         protected String name;
         @XmlAttribute(name = "date")
@@ -170,10 +169,10 @@ public class Message {
          * 
          * @return
          *     possible object is
-         *     {@link BigInteger }
+         *     {@link Integer }
          *     
          */
-        public BigInteger getId() {
+        public Integer getId() {
             return id;
         }
 
@@ -182,10 +181,10 @@ public class Message {
          * 
          * @param value
          *     allowed object is
-         *     {@link BigInteger }
+         *     {@link Integer }
          *     
          */
-        public void setId(BigInteger value) {
+        public void setId(Integer value) {
             this.id = value;
         }
 

@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // �nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.04.30 um 11:50:54 PM CEST 
+// Generiert: 2013.05.07 um 07:22:12 PM CEST 
 //
 
 
-package jaxb.message;
+package restserver.schema.messages;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

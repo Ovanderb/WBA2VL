@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<message>
+    <movie id="1" name="foo" date="01.01.2000" image="http://w.w.de" link="http://w.w.de">
+        <discription>Lorem Ipsum</discription>
+    </movie>
+    <movie id="2" name="bar" image="http://w.w.de" link="http://w.w.de">
+        <discription>Ipsum</discription>
+    </movie>
+    <movie id="3" name="gnuffel" image="http://w.w.de" link="http://w.w.de">
+        <discription>gnuffel</discription>
+    </movie>
+</message>
