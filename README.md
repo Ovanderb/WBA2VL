@@ -9,6 +9,8 @@ Entwicklung eines RESTfull Videothek Systems, dass in der Lage ist, Infos zu Neu
 Weiterhin eine Synchronisierung des Clients mit dem Index des Servers nach erfolgter Anmeldung am Dienst.
 Zusätzlich eine Möglichkeit für Operator neue Filme und Daten einstellen zu können.
 
+## Vorraussetzungen
+Unter JDK 1.7 / 7 entwickelt. Nicht mit JRE 6 getestet.
 
 ## Infrastruktur:
 ###Server: 
