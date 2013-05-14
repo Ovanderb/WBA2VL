@@ -20,7 +20,7 @@ public class MessageResource {
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Message Get() throws JAXBException {
+    public Message Get() throws JAXBException, FileNotFoundException {
         return this.m.umes();
     }
 
@@ -38,7 +38,7 @@ public class MessageResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response messageGet(@PathParam("id") Integer id) throws JAXBException {
+    public Response messageGet(@PathParam("id") Integer id) throws JAXBException, FileNotFoundException {
         Message a = this.m.umes();
         for (Message.Movie o: a.getMovie()){
             if(o.getId().equals(id)){

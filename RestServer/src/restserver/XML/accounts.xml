@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <accounts>
-    <account name="newnew" mail="new@acc.de" password="oihfdoehf">
+    <account name="newnew" mail="foo@bar.de" password="oihfdoehf">
         <genres>15453</genres>
         <wishes>453453</wishes>
     </account>
@@ -11,5 +11,9 @@
     <account name="bar" mail="bar@acc.de" password="barbar">
         <genres>53562</genres>
         <wishes>23</wishes>
+    </account>
+    <account name="frefe" mail="foo@bar.de" password="oihfdoehf">
+        <genres>15453</genres>
+        <wishes>453453</wishes>
     </account>
 </accounts>

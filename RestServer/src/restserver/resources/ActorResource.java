@@ -26,7 +26,7 @@ public class ActorResource {
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Response Get() throws JAXBException {
+    public Response Get() throws JAXBException, FileNotFoundException {
         return Response.status(Response.Status.OK).entity(this.m.uact()).build();
     }
 
@@ -44,7 +44,7 @@ public class ActorResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response uGet(@PathParam("id") String id) throws JAXBException {
+    public Response uGet(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
         Actors a = this.m.uact();
         for (Actors.Actor o: a.getActor()){
             if(o.getName().equals(id)){

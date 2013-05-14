@@ -25,7 +25,7 @@ public class AccountResource {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Accounts Get() throws JAXBException {
+    public Accounts Get() throws JAXBException, FileNotFoundException {
         return this.m.uacc();
     }
 
@@ -43,7 +43,7 @@ public class AccountResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response uGet(@PathParam("id") String id) throws JAXBException {
+    public Response uGet(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
         Accounts a = this.m.uacc();
         for (Accounts.Account accs : a.getAccount()) {
             if (accs.getName().equals(id)) {

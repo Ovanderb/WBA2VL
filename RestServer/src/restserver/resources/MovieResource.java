@@ -26,7 +26,7 @@ public class MovieResource {
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Movies Get() throws JAXBException {
+    public Movies Get() throws JAXBException, FileNotFoundException {
         return this.m.umov();
     }
 
@@ -44,7 +44,7 @@ public class MovieResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response uGet(@PathParam("id") Integer id) throws JAXBException {
+    public Response uGet(@PathParam("id") Integer id) throws JAXBException, FileNotFoundException {
         Movies a = this.m.umov();
         for (Movies.Movie o: a.getMovie()){
             if(o.getMovieid().equals(id)){

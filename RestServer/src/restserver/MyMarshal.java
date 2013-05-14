@@ -4,7 +4,7 @@
  */
 package restserver;
 
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.StringReader;
@@ -25,9 +25,11 @@ import restserver.schema.bills.Bills;
 import restserver.schema.genres.Genres;
 import restserver.schema.messages.Message;
 import restserver.schema.movies.Movies;
-
 /**
- *
+ * Klasse um die generellen Marshalling und Unmarshalling Funktionalitäten
+ * der einzelnen JAXB Klassen respektive der einzelnen Resourcen zur Verfügung
+ * zu stellen.
+ * 
  * @author Olli
  */
 public class MyMarshal {
@@ -38,8 +40,10 @@ public class MyMarshal {
     JAXBContext gen;
     JAXBContext mes;
     JAXBContext mov;
+    String Pfad;
 
     public MyMarshal() throws JAXBException {
+        this.Pfad = System.getProperty("user.dir") + "/XML/";
         this.acc = JAXBContext.newInstance(Accounts.class);
         this.act = JAXBContext.newInstance(Actors.class);
         this.bil = JAXBContext.newInstance(Bills.class);
@@ -49,19 +53,19 @@ public class MyMarshal {
     }
 
     /**
-     * unmarshal
+     * unmarshal Account XML out of saved File
      *
      * @return
      * @throws JAXBException
      */
-    public Accounts uacc() throws JAXBException {
+    public Accounts uacc() throws JAXBException, FileNotFoundException {
         Unmarshaller m = acc.createUnmarshaller();
-        Accounts a = (Accounts) m.unmarshal(new File("src/restserver/XML/accounts.xml"));
+        Accounts a = (Accounts) m.unmarshal(new FileInputStream(Pfad + "accounts.xml"));
         return a;
     }
 
     /**
-     * unmarshal
+     * unmarshal 
      *
      * @return
      * @throws JAXBException
@@ -82,19 +86,19 @@ public class MyMarshal {
     public void macc(Accounts a) throws JAXBException, FileNotFoundException {
         Marshaller m = acc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream("src/restserver/XML/accounts.xml");
+        FileOutputStream f = new FileOutputStream(Pfad + "accounts.xml");
         m.marshal(a, f);
     }
 
     /**
-     * unmarshal
+     * unmarshal Actor XML out of saved File
      *
      * @return
      * @throws JAXBException
      */
-    public Actors uact() throws JAXBException {
+    public Actors uact() throws JAXBException, FileNotFoundException {
         Unmarshaller m = act.createUnmarshaller();
-        Actors a = (Actors) m.unmarshal(new File("src/restserver/XML/actors.xml"));
+        Actors a = (Actors) m.unmarshal(new FileInputStream(Pfad + "actors.xml"));
         return a;
     }
 
@@ -120,19 +124,19 @@ public class MyMarshal {
     public void mact(Actors a) throws JAXBException, FileNotFoundException {
         Marshaller m = act.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream("src/restserver/XML/actors.xml");
+        FileOutputStream f = new FileOutputStream(Pfad + "actors.xml");
         m.marshal(a, f);
     }
 
     /**
-     * unmarshal
+     * unmarshal Bills XML out of saved File
      *
      * @return
      * @throws JAXBException
      */
-    public Bills ubil() throws JAXBException {
+    public Bills ubil() throws JAXBException, FileNotFoundException {
         Unmarshaller m = bil.createUnmarshaller();
-        Bills a = (Bills) m.unmarshal(new File("src/restserver/XML/bills.xml"));
+        Bills a = (Bills) m.unmarshal(new FileInputStream(Pfad + "bills.xml"));
         return a;
     }
 
@@ -158,19 +162,19 @@ public class MyMarshal {
     public void mbil(Bills a) throws JAXBException, FileNotFoundException {
         Marshaller m = bil.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream("src/restserver/XML/bills.xml");
+        FileOutputStream f = new FileOutputStream(Pfad + "bills.xml");
         m.marshal(a, f);
     }
 
     /**
-     * unmarshal
+     * unmarshal Genres XML out of saved File
      *
      * @return
      * @throws JAXBException
      */
-    public Genres ugen() throws JAXBException {
+    public Genres ugen() throws JAXBException, FileNotFoundException {
         Unmarshaller m = gen.createUnmarshaller();
-        Genres a = (Genres) m.unmarshal(new File("src/restserver/XML/genres.xml"));
+        Genres a = (Genres) m.unmarshal(new FileInputStream(Pfad + "genres.xml"));
         return a;
     }
 
@@ -196,19 +200,19 @@ public class MyMarshal {
     public void mgen(Genres a) throws JAXBException, FileNotFoundException {
         Marshaller m = gen.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream("src/restserver/XML/genres.xml");
+        FileOutputStream f = new FileOutputStream(Pfad + "genres.xml");
         m.marshal(a, f);
     }
 
     /**
-     * unmarshal
+     * unmarshal Messages XML out of saved File
      *
      * @return
      * @throws JAXBException
      */
-    public Message umes() throws JAXBException {
+    public Message umes() throws JAXBException, FileNotFoundException {
         Unmarshaller m = mes.createUnmarshaller();
-        Message a = (Message) m.unmarshal(new File("src/restserver/XML/message.xml"));
+        Message a = (Message) m.unmarshal(new FileInputStream(Pfad + "message.xml"));
         return a;
     }
 
@@ -234,19 +238,19 @@ public class MyMarshal {
     public void mmes(Message a) throws JAXBException, FileNotFoundException {
         Marshaller m = mes.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream("src/restserver/XML/message.xml");
+        FileOutputStream f = new FileOutputStream(Pfad + "message.xml");
         m.marshal(a, f);
     }
 
     /**
-     * unmarshal
+     * unmarshal Movies XML out of saved File
      *
      * @return
      * @throws JAXBException
      */
-    public Movies umov() throws JAXBException {
+    public Movies umov() throws JAXBException, FileNotFoundException {
         Unmarshaller m = mov.createUnmarshaller();
-        Movies a = (Movies) m.unmarshal(new File("src/restserver/XML/movies.xml"));
+        Movies a = (Movies) m.unmarshal(new FileInputStream(Pfad + "movies.xml"));
         return a;
     }
 
@@ -272,7 +276,7 @@ public class MyMarshal {
     public void mmov(Movies a) throws JAXBException, FileNotFoundException {
         Marshaller m = mov.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream("src/restserver/XML/movies.xml");
+        FileOutputStream f = new FileOutputStream(Pfad + "movies.xml");
         m.marshal(a, f);
     }
 

@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import restserver.MyMarshal;
-import restserver.schema.actors.Actors;
 import restserver.schema.genres.*;
 
 @Path("genres")
@@ -27,7 +26,7 @@ public class GenreResource {
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Genres Get() throws JAXBException {
+    public Genres Get() throws JAXBException, FileNotFoundException {
         return this.m.ugen();
     }
 
@@ -45,7 +44,7 @@ public class GenreResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Genres.Genre uGet(@PathParam("id") String id) throws JAXBException {
+    public Genres.Genre uGet(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
         Genres a = this.m.ugen();
         for (Genres.Genre o: a.getGenre()){
             if(o.getName().equals(id)){

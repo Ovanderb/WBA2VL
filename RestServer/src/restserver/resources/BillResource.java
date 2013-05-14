@@ -25,7 +25,7 @@ public class  BillResource {
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Bills Get() throws JAXBException {
+    public Bills Get() throws JAXBException, FileNotFoundException {
         return this.m.ubil();
     }
     
@@ -41,7 +41,7 @@ public class  BillResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response uGet(@PathParam("id") String id) throws JAXBException {
+    public Response uGet(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
         Bills a = this.m.ubil();
         for (Bills.Bill o: a.getBill()){
             if(o.getId()== Integer.parseInt(id)){
