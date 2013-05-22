@@ -7,8 +7,28 @@
           <xsd:complexType>
             <xsd:sequence>
               <xsd:element name="discription" type="xsd:string" />
-              <xsd:element name="actors" type="xsd:string" />
-              <xsd:element name="genres" type="xsd:string" />
+              <xsd:element name="actors">
+                <xsd:complexType>
+              	  <xsd:sequence>
+              	  	<xsd:element name="actor" minOccurs="0" maxOccurs="unbounded">
+              	  	  <xsd:complexType>
+              	  	  	<xsd:attribute name="id" type="xsd:int" />
+              	  	  </xsd:complexType>
+              	  	</xsd:element>
+              	  </xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="genres">
+              	<xsd:complexType>
+              	  <xsd:sequence>
+              	  	<xsd:element name="genre" minOccurs="0" maxOccurs="unbounded">
+              	  	  <xsd:complexType>
+              	  	  	<xsd:attribute name="id" type="xsd:int" />
+              	  	  </xsd:complexType>
+              	  	</xsd:element>
+              	  </xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
               <xsd:element name="stocks">
                 <xsd:complexType>
                   <xsd:sequence>
@@ -23,6 +43,7 @@
                 </xsd:complexType>
               </xsd:element>
             </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:int" />
             <xsd:attribute name="name" type="xsd:string" />
             <xsd:attribute name="length" type="xsd:int" />
             <xsd:attribute name="format" type="xsd:string" />
