@@ -1,19 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <accounts>
-    <account name="newnew" mail="foo@bar.de" password="oihfdoehf">
-        <genres>15453</genres>
-        <wishes>453453</wishes>
+    <account id="0" name="newnew" mail="foo@bar.de" password="oihfdoehf">
+        <genres>
+            <genre id="1"/>
+            <genre id="5"/>
+            <genre id="4"/>
+            <genre id="3"/>
+        </genres>
+        <wishes>
+            <movie id="45"/>
+            <movie id="34"/>
+            <movie id="53"/>
+        </wishes>
     </account>
-    <account name="foo" mail="foo@acc.de" password="foofoo">
-        <genres>343225</genres>
-        <wishes>234234</wishes>
+    <account id="1" name="foo" mail="foo@acc.de" password="foofoo">
+        <genres>
+            <genre id="1"/>
+            <genre id="5"/>
+            <genre id="4"/>
+            <genre id="3"/>
+        </genres>
+        <wishes>
+            <movie id="45"/>
+            <movie id="34"/>
+            <movie id="53"/>
+        </wishes>
     </account>
-    <account name="bar" mail="bar@acc.de" password="barbar">
-        <genres>53562</genres>
-        <wishes>23</wishes>
+    <account id="2" name="bar" mail="bar@acc.de" password="barbar">
+        <genres>
+            <genre id="1"/>
+            <genre id="5"/>
+            <genre id="4"/>
+            <genre id="3"/>
+        </genres>
+        <wishes>
+            <movie id="45"/>
+            <movie id="34"/>
+            <movie id="53"/>
+        </wishes>
     </account>
-    <account name="frefe" mail="foo@bar.de" password="oihfdoehf">
-        <genres>15453</genres>
-        <wishes>453453</wishes>
+    <account id="3" name="frefe" mail="foo@bar.de" password="oihfdoehf">
+        <genres>
+            <genre id="1"/>
+            <genre id="5"/>
+            <genre id="4"/>
+            <genre id="3"/>
+        </genres>
+        <wishes>
+            <movie id="45"/>
+            <movie id="34"/>
+            <movie id="53"/>
+        </wishes>
     </account>
 </accounts>
