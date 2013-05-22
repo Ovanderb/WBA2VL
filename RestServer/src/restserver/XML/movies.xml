@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <movies>
-    <movie movieid="45" name="Rambo" length="120" format="dvd" regiseur="life" image="http://a.a.de" price="5.0">
+    <movie id="45" name="Rambo" length="120" format="dvd" regiseur="life" image="http://a.a.de" price="5.0">
         <discription>Bämm Bumm Knall Puff Peng</discription>
-        <actors>arnie</actors>
-        <genres>Action</genres>
+        <actors>
+            <actor id="1"/>
+        </actors>
+        <genres>
+            <genre id="1"/>
+        </genres>
         <stocks>
-            <stock id="10" lent="true"/>
-            <stock id="11" lent="true"/>
+            <stock id="10" lent="true" until="2013/24/05"/>
+            <stock id="11" lent="true" until="2013/24/05"/>
         </stocks>
     </movie>
 </movies>
