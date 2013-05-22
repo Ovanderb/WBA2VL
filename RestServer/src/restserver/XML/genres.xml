@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genres>
-  <genre name="Action"/>
-  <genre name="Comedy"/>
+  <genre id="0" name="Action"/>
+  <genre id="1" name="Fantasy"/>
+  <genre id="2" name="Science Fiction"/>
+  <genre id="3" name="Comedy"/>
+  <genre id="4" name="Animation"/>
+  <genre id="5" name="Horro"/>
+  <genre id="6" name="Thriller"/>
+  <genre id="7" name="Splatter"/>
+  <genre id="8" name="Drama"/>
+  <genre id="9" name="Documentary"/>
+  <genre id="10" name="Love"/>
 </genres>
