@@ -9,8 +9,8 @@
             <genre id="1"/>
         </genres>
         <stocks>
-            <stock id="10" lent="true" until="2013/24/05"/>
-            <stock id="11" lent="true" until="2013/24/05"/>
+            <stock id="10" lent="true" return="2013/24/05"/>
+            <stock id="11" lent="true" return="2013/24/05"/>
         </stocks>
     </movie>
 </movies>
