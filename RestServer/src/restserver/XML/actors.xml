@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actors>
-  <actor name="Bread"/>
-  <actor name="Piet"/>
+  <actor id="0" name="Bread Pit"/>
+  <actor id="1" name="Angelina Juli"/>
 </actors>
