@@ -10,7 +10,7 @@
               <xsd:element name="actors">
                 <xsd:complexType>
               	  <xsd:sequence>
-              	  	<xsd:element name="actor" minOccurs="0" maxOccurs="unbounded">
+              	    <xsd:element name="actor" minOccurs="0" maxOccurs="unbounded">
               	  	  <xsd:complexType>
               	  	  	<xsd:attribute name="id" type="xsd:int" />
               	  	  </xsd:complexType>
