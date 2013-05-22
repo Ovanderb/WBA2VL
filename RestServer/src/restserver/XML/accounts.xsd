@@ -6,9 +6,30 @@
         <xsd:element name="account" maxOccurs="unbounded">
           <xsd:complexType>
             <xsd:sequence>
-              <xsd:element name="genres" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
-              <xsd:element name="wishes" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+              <xsd:element name="genres">
+                <xsd:complexType>
+              	  <xsd:sequence>
+              	  	<xsd:element name="genre" minOccurs="0" maxOccurs="unbounded">
+              	  	  <xsd:complexType>
+              	  	    <xsd:attribute name="id" type="xsd:int" />
+              	  	  </xsd:complexType>
+              	  	</xsd:element>
+              	  </xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
+              <xsd:element name="wishes">
+              	<xsd:complexType>
+              	  <xsd:sequence>
+              	  	<xsd:element name="movie" minOccurs="0" maxOccurs="unbounded">
+              	  	  <xsd:complexType>
+              	  	    <xsd:attribute name="id" type="xsd:int" />
+              	  	  </xsd:complexType>
+              	  	</xsd:element>
+              	  </xsd:sequence>
+              	</xsd:complexType>
+              </xsd:element>
             </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:int" />
             <xsd:attribute name="name" type="xsd:string" />
             <xsd:attribute name="mail" type="xsd:string" />
             <xsd:attribute name="age" type="xsd:date" />
