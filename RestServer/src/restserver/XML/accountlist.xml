@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<accounts>
+    <account id="0" name="newnew" link="http://www.restful.de/accounts/0/" />
+    <account id="1" name="foo" link="http://www.restful.de/accounts/1/" />
+    <account id="2" name="bar" link="http://www.restful.de/accounts/2/" />
+    <account id="3" name="frefe" link="http://www.restful.de/accounts/3/" />
+</accounts>
