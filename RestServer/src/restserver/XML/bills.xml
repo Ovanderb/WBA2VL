@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bills>
-  <bill id="1" cash="true" bank="asas" account="2" code="63732847" owner="foo">
+  <bill id="1" cash="true" bank="asas" account="2" code="63732847" owner="foo" date="2013/22/05">
     <movie name="rambo" price="5.00"/>
   </bill>
 </bills>
