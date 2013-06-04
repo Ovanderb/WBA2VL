@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="RestServer" default="default" basedir=".">
-    <description>Builds, tests, and runs the project RestServer.</description>
+<project name="XMMPClient" default="default" basedir=".">
+    <description>Builds, tests, and runs the project XMMPClient.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
@@ -59,7 +59,7 @@
 
     An example of overriding the target for project execution could look like this:
 
-        <target name="run" depends="RestServer-impl.jar">
+        <target name="run" depends="XMMPClient-impl.jar">
             <exec dir="bin" executable="launcher.exe">
                 <arg file="${dist.jar}"/>
             </exec>
@@ -71,17 +71,4 @@
     nbproject/build-impl.xml file. 
 
     -->
-    <target name="-post-jar">
-  <jar jarfile="dist/Combined-dist.jar">
-    <zipfileset src="${dist.jar}" excludes="META-INF/*" />
-    <zipfileset src="..\Server\src\server\lib\jersey-bundle-1.8.jar" excludes="META-INF/*" />
-    <zipfileset src="..\Server\src\server\lib\asm-3.1.jar" excludes="META-INF/*" />
-    <zipfileset src="..\Server\src\server\lib\jsr311-api-1.1.jar" excludes="META-INF/*" />
-    <zipfileset src="..\XMPPClient\src\lib\smack.jar" excludes="META-INF/*" />
-    <zipfileset src="..\XMPPClient\src\lib\smackx.jar" excludes="META-INF/*" />
-    <manifest>
-        <attribute name="Main-Class" value="restserver.RestServer"/>
-    </manifest>
-  </jar>
-</target>
 </project>

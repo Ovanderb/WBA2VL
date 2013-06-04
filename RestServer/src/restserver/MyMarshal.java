@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.StringReader;
+import java.io.StringWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -232,7 +233,6 @@ public class MyMarshal {
     /**
      * marshal
      *
-     * @return
      * @throws JAXBException
      */
     public void mmes(Message a) throws JAXBException, FileNotFoundException {
@@ -240,6 +240,18 @@ public class MyMarshal {
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         FileOutputStream f = new FileOutputStream(Pfad + "message.xml");
         m.marshal(a, f);
+    }
+    /**
+     * movie marshal
+     * 
+     * @param m 
+     */
+    public String mmsend(Message.Movie movie) throws JAXBException{
+        Marshaller m = mes.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        StringWriter stringWriter = new StringWriter();
+        m.marshal(movie, stringWriter);
+        return stringWriter.toString();
     }
 
     /**

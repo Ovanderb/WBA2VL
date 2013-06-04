@@ -10,3 +10,7 @@
 /RestServer/nbproject/private/
 /RestServer/build/
 /RestServer/dist/
+/AdminClient/build/
+/XMPPClient/XMMPClient/nbproject/private/
+/XMPPClient/XMMPClient/build/
+/XMPPClient/XMMPClient/dist/

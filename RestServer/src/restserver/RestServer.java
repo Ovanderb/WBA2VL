@@ -16,7 +16,7 @@ public class RestServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, FileNotFoundException, JAXBException {
-        new Checkpath();
+        Checkpath chk = new Checkpath();
         HttpServer server = HttpServerFactory.create("http://localhost:20000/");
         server.start();
         JOptionPane.showMessageDialog(null, "Ende");

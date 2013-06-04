@@ -38,6 +38,7 @@
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
+      <xsd:attribute name="backlink" type="xsd:anyURI" />
     </xsd:complexType>
   </xsd:element>
 </xsd:schema>

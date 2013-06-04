@@ -38,12 +38,15 @@ public class Checkpath {
         System.out.println(Pfad);
         if (!new File(Pfad).isDirectory()) {
             new File(Pfad).mkdir();
+            copyDat("XML/accountlist.xml","accountlist.xml");
             copyDat("XML/accounts.xml","accounts.xml");
             copyDat("XML/actors.xml","actors.xml");
             copyDat("XML/bills.xml","bills.xml");
             copyDat("XML/genres.xml","genres.xml");
             copyDat("XML/message.xml","message.xml");
+            copyDat("XML/movielist.xml","movielist.xml");
             copyDat("XML/movies.xml","movies.xml");
+            copyDat("XML/main.xml","main.xml");
         }
     }
 }

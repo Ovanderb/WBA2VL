@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <xsd:element name="movies">
+  <xsd:element name="movielist">
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="movie" minOccurs="0" maxOccurs="unbounded">
