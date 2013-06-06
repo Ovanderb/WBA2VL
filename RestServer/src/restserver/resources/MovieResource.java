@@ -4,6 +4,7 @@
  */
 package restserver.resources;
 
+import restserver.schema.movie.Movies;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.FileNotFoundException;
@@ -13,31 +14,31 @@ import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import restserver.MyMarshal;
-import restserver.schema.movies.*;
 
 @Path("movies")
 public class MovieResource {
-    private FileOutputStream f;
-    private MyMarshal m;
+    private MyMarshal marshal;
+    private String link;    
 
-    public MovieResource() throws JAXBException {
-        this.m = new MyMarshal();
+    public MovieResource() throws JAXBException, FileNotFoundException {
+        this.marshal = new MyMarshal();
+        this.link = "http://127.0.0.1:20000/accounts/";
     }
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Movies Get() throws JAXBException, FileNotFoundException {
-        return this.m.umov();
+        return this.marshal.toMovies();
     }
 
     @PUT
     @Consumes( MediaType.APPLICATION_XML )
     @Produces(MediaType.APPLICATION_XML)
     public Response Put(String s) throws FileNotFoundException, JAXBException {
-        Movies existingobj = this.m.umov();
-        Movies newobj = this.m.umov(s);
+        Movies existingobj = this.marshal.toMovies();
+        Movies newobj = this.marshal.toMovies(s);
         existingobj.getMovie().add(newobj.getMovie().get(0));
-        this.m.mmov(existingobj);
+        this.marshal.doMovies(existingobj);
         return Response.status(201).build();
     }
 
@@ -45,7 +46,7 @@ public class MovieResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public Response uGet(@PathParam("id") Integer id) throws JAXBException, FileNotFoundException {
-        Movies a = this.m.umov();
+        Movies a = this.marshal.toMovies();
         for (Movies.Movie o: a.getMovie()){
             if(o.getMovieid().equals(id)){
                 return Response.status(Response.Status.OK).entity(o).build();
@@ -72,14 +73,14 @@ public class MovieResource {
             @QueryParam("stockid") Integer stockid,
             @QueryParam("lent") Boolean lent,
             @QueryParam("retour") String retour) throws JAXBException, FileNotFoundException, ParseException, DatatypeConfigurationException {
-        Movies a = this.m.umov();
+        Movies a = this.marshal.toMovies();
         for (Movies.Movie accs : a.getMovie()) {
             if (accs.getMovieid().equals(mid)) {
                 if (desc != null) {
                     accs.setDiscription(desc);
                 }
                 if (date != null) {
-                    accs.setDate(this.m.strToXmlGreg(date));
+                    accs.setDate(this.marshal.toDate(date));
                 }
                 if (name != null) {
                     accs.setName(name);
@@ -111,11 +112,11 @@ public class MovieResource {
                             st.setLent(lent);
                         }
                         if (retour != null) {
-                            st.setReturn(this.m.strToXmlGreg(retour));
+                            st.setReturn(this.marshal.toDate(retour));
                         }
                     }
                 }
-                this.m.mmov(a);
+                this.marshal.doMovies(a);
                 return Response.status(Response.Status.OK).build();
             }
         }
@@ -126,12 +127,12 @@ public class MovieResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public Response uDelete(@PathParam("id") String id) throws FileNotFoundException, JAXBException {
-        Movies a = this.m.umov();
+        Movies a = this.marshal.toMovies();
         int i = 0;
         for (Movies.Movie accs: a.getMovie()){
             if(accs.getName().equals(id)){
                 a.getMovie().remove(i);
-                this.m.mmov(a);
+                this.marshal.doMovies(a);
                 return Response.status(200).build();
             }
             i++;

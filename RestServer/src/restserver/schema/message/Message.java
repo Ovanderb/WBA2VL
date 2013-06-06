@@ -6,7 +6,7 @@
 //
 
 
-package restserver.schema.messages;
+package restserver.schema.message;
 
 import java.util.ArrayList;
 import java.util.List;

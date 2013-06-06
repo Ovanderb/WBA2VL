@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // �nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.07 um 07:21:24 PM CEST 
+// Generiert: 2013.05.07 um 07:22:12 PM CEST 
 //
 
 
-package restserver.schema.bills;
+package restserver.schema.message;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -37,27 +37,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Bills }
+     * Create an instance of {@link Message }
      * 
      */
-    public Bills createBills() {
-        return new Bills();
+    public Message createMessage() {
+        return new Message();
     }
 
     /**
-     * Create an instance of {@link Bills.Bill }
+     * Create an instance of {@link Message.Movie }
      * 
      */
-    public Bills.Bill createBillsBill() {
-        return new Bills.Bill();
-    }
-
-    /**
-     * Create an instance of {@link Bills.Bill.Movie }
-     * 
-     */
-    public Bills.Bill.Movie createBillsBillMovie() {
-        return new Bills.Bill.Movie();
+    public Message.Movie createMessageMovie() {
+        return new Message.Movie();
     }
 
 }

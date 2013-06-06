@@ -8,302 +8,276 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.Marshaller;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import restserver.schema.accounts.Accounts;
-import restserver.schema.actors.Actors;
-import restserver.schema.bills.Bills;
-import restserver.schema.genres.Genres;
-import restserver.schema.messages.Message;
-import restserver.schema.movies.Movies;
+import restserver.schema.account.list.Accountlist;
+import restserver.schema.account.Accounts;
+import restserver.schema.actor.Actors;
+import restserver.schema.bill.Bills;
+import restserver.schema.genre.Genres;
+import restserver.schema.message.Message;
+import restserver.schema.movie.Movies;
+import restserver.schema.movie.list.Movielist;
+
 /**
  * Klasse um die generellen Marshalling und Unmarshalling Funktionalitäten
  * der einzelnen JAXB Klassen respektive der einzelnen Resourcen zur Verfügung
  * zu stellen.
  * 
  * @author Olli
+ * @author Nico
  */
 public class MyMarshal {
-
-    JAXBContext acc;
-    JAXBContext act;
-    JAXBContext bil;
-    JAXBContext gen;
-    JAXBContext mes;
-    JAXBContext mov;
-    String Pfad;
-
+    JAXBContext accountlist;
+    JAXBContext accounts;
+    JAXBContext actors;
+    JAXBContext bills;
+    JAXBContext genres;
+    JAXBContext message;
+    JAXBContext movies;
+    JAXBContext movielist;
+    String path;
+    
     public MyMarshal() throws JAXBException {
-        this.Pfad = System.getProperty("user.dir") + "/XML/";
-        this.acc = JAXBContext.newInstance(Accounts.class);
-        this.act = JAXBContext.newInstance(Actors.class);
-        this.bil = JAXBContext.newInstance(Bills.class);
-        this.gen = JAXBContext.newInstance(Genres.class);
-        this.mes = JAXBContext.newInstance(Message.class);
-        this.mov = JAXBContext.newInstance(Movies.class);
+        this.accountlist = JAXBContext.newInstance(Accountlist.class);
+        this.accounts = JAXBContext.newInstance(Accounts.class);
+        this.actors = JAXBContext.newInstance(Actors.class);
+        this.bills = JAXBContext.newInstance(Bills.class);
+        this.genres = JAXBContext.newInstance(Genres.class);
+        this.message = JAXBContext.newInstance(Message.class);
+        this.movies = JAXBContext.newInstance(Movies.class);
+        this.movielist = JAXBContext.newInstance(Movielist.class);
+        this.path = System.getProperty("user.dir") + "/XML/";
     }
 
     /**
-     * unmarshal Account XML out of saved File
+     * unmarshal Accounts out of Savefile
+     *
+     * @return Accounts
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     */
+    public Accounts toAccounts() throws JAXBException, FileNotFoundException {
+        return (Accounts) this.accounts.createUnmarshaller().unmarshal(new FileInputStream(this.path + "accounts.xml"));
+    }
+
+    /**
+     * unmarshal Accounts out of String
+     *
+     * @return Accounts
+     * @throws JAXBException
+     */
+    public Accounts toAccounts(String xml) throws JAXBException {
+        return (Accounts) this.accounts.createUnmarshaller().unmarshal(new StringReader(xml));
+    }
+
+    /**
+     * marshal Accounts into Savefile
      *
      * @return
      * @throws JAXBException
+     * @throws FileNotFoundException
      */
-    public Accounts uacc() throws JAXBException, FileNotFoundException {
-        Unmarshaller m = acc.createUnmarshaller();
-        Accounts a = (Accounts) m.unmarshal(new FileInputStream(Pfad + "accounts.xml"));
-        return a;
+    public void doAccounts(Accounts accounts) throws JAXBException, FileNotFoundException {
+        this.accounts.createMarshaller().marshal(accounts, new FileOutputStream(this.path + "accounts.xml"));
+    }
+    
+    /**
+     * unmarshal Actors out of Savefile
+     *
+     * @return Actors
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     */
+    public Actors toActors() throws JAXBException, FileNotFoundException {
+        return (Actors) this.actors.createUnmarshaller().unmarshal(new FileInputStream(this.path + "actors.xml"));
     }
 
     /**
-     * unmarshal 
+     * unmarshal Actors out of String
+     *
+     * @return Actors
+     * @throws JAXBException
+     */
+    public Actors toActors(String xml) throws JAXBException {
+        return (Actors) this.actors.createUnmarshaller().unmarshal(new StringReader(xml));
+    }
+
+    /**
+     * marshal Actors into Savefile
      *
      * @return
      * @throws JAXBException
+     * @throws FileNotFoundException
      */
-    public Accounts uacc(String s) throws JAXBException {
-        Unmarshaller m = acc.createUnmarshaller();
-        StringReader reader = new StringReader(s);
-        Accounts a = (Accounts) m.unmarshal(reader);
-        return a;
+    public void doActors(Actors actors) throws JAXBException, FileNotFoundException {
+        this.actors.createMarshaller().marshal(actors, new FileOutputStream(this.path + "actors.xml"));
+    }
+    
+    /**
+     * unmarshal Bills out of Savefile
+     *
+     * @return Bills
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     */
+    public Bills toBills() throws JAXBException, FileNotFoundException {
+        return (Bills) this.bills.createUnmarshaller().unmarshal(new FileInputStream(this.path + "bills.xml"));
     }
 
     /**
-     * marshal
+     * unmarshal Bills out of String
+     *
+     * @return Bills
+     * @throws JAXBException
+     */
+    public Bills toBills(String xml) throws JAXBException {
+        return (Bills) this.bills.createUnmarshaller().unmarshal(new StringReader(xml));
+    }
+
+    /**
+     * marshal Bills into Savefile
      *
      * @return
      * @throws JAXBException
+     * @throws FileNotFoundException
      */
-    public void macc(Accounts a) throws JAXBException, FileNotFoundException {
-        Marshaller m = acc.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream(Pfad + "accounts.xml");
-        m.marshal(a, f);
+    public void doBills(Bills bills) throws JAXBException, FileNotFoundException {
+        this.bills.createMarshaller().marshal(bills, new FileOutputStream(this.path + "bills.xml"));
+    }
+    
+    /**
+     * unmarshal Genres out of Savefile
+     *
+     * @return Genres
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     */
+    public Genres toGenres() throws JAXBException, FileNotFoundException {
+        return (Genres) this.genres.createUnmarshaller().unmarshal(new FileInputStream(this.path + "genres.xml"));
     }
 
     /**
-     * unmarshal Actor XML out of saved File
+     * unmarshal Genres out of String
+     *
+     * @return Genres
+     * @throws JAXBException
+     */
+    public Genres toGenres(String xml) throws JAXBException {
+        return (Genres) this.genres.createUnmarshaller().unmarshal(new StringReader(xml));
+    }
+
+    /**
+     * marshal Genres into Savefile
      *
      * @return
      * @throws JAXBException
+     * @throws FileNotFoundException
      */
-    public Actors uact() throws JAXBException, FileNotFoundException {
-        Unmarshaller m = act.createUnmarshaller();
-        Actors a = (Actors) m.unmarshal(new FileInputStream(Pfad + "actors.xml"));
-        return a;
+    public void doGenres(Genres genres) throws JAXBException, FileNotFoundException {
+        this.genres.createMarshaller().marshal(genres, new FileOutputStream(this.path + "genres.xml"));
+    }
+    
+    /**
+     * unmarshal Message out of Savefile
+     *
+     * @return Movies
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     */
+    public Message toMessage() throws JAXBException, FileNotFoundException {
+        return (Message) this.message.createUnmarshaller().unmarshal(new FileInputStream(this.path + "message.xml"));
     }
 
     /**
-     * unmarshal
+     * unmarshal Message out of String
+     *
+     * @return Movies
+     * @throws JAXBException
+     */
+    public Message toMessage(String xml) throws JAXBException {
+        return (Message) this.message.createUnmarshaller().unmarshal(new StringReader(xml));
+    }
+
+    /**
+     * marshal Message into Savefile
      *
      * @return
      * @throws JAXBException
+     * @throws FileNotFoundException
      */
-    public Actors uact(String s) throws JAXBException {
-        Unmarshaller m = act.createUnmarshaller();
-        StringReader reader = new StringReader(s);
-        Actors a = (Actors) m.unmarshal(reader);
-        return a;
+    public void doMessage(Message message) throws JAXBException, FileNotFoundException {
+        this.message.createMarshaller().marshal(message, new FileOutputStream(this.path + "message.xml"));
+    }
+    
+    /**
+     * unmarshal Movies out of Savefile
+     *
+     * @return Movies
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     */
+    public Movies toMovies() throws JAXBException, FileNotFoundException {
+        return (Movies) this.movies.createUnmarshaller().unmarshal(new FileInputStream(this.path + "movies.xml"));
     }
 
     /**
-     * marshal
+     * unmarshal Movies out of String
+     *
+     * @return Movies
+     * @throws JAXBException
+     */
+    public Movies toMovies(String xml) throws JAXBException {
+        return (Movies) this.movies.createUnmarshaller().unmarshal(new StringReader(xml));
+    }
+
+    /**
+     * marshal Movies into Savefile
      *
      * @return
      * @throws JAXBException
+     * @throws FileNotFoundException
      */
-    public void mact(Actors a) throws JAXBException, FileNotFoundException {
-        Marshaller m = act.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream(Pfad + "actors.xml");
-        m.marshal(a, f);
+    public void doMovies(Movies movies) throws JAXBException, FileNotFoundException {
+        this.movies.createMarshaller().marshal(movies, new FileOutputStream(this.path + "movies.xml"));
     }
-
+    
     /**
-     * unmarshal Bills XML out of saved File
+     * unmarshal Accountlist out of String
      *
-     * @return
+     * @return Accountlist
      * @throws JAXBException
      */
-    public Bills ubil() throws JAXBException, FileNotFoundException {
-        Unmarshaller m = bil.createUnmarshaller();
-        Bills a = (Bills) m.unmarshal(new FileInputStream(Pfad + "bills.xml"));
-        return a;
+    public Accountlist toAccountlist(String xml) throws JAXBException {
+        return (Accountlist) this.accountlist.createUnmarshaller().unmarshal(new StringReader(xml));
     }
-
+    
     /**
-     * unmarshal
+     * unmarshal Movielist out of String
      *
-     * @return
+     * @return Movielist
      * @throws JAXBException
      */
-    public Bills ubil(String s) throws JAXBException {
-        Unmarshaller m = bil.createUnmarshaller();
-        StringReader reader = new StringReader(s);
-        Bills a = (Bills) m.unmarshal(reader);
-        return a;
+    public Movielist toMovielist(String xml) throws JAXBException {
+        return (Movielist) this.movielist.createUnmarshaller().unmarshal(new StringReader(xml));
     }
-
+    
     /**
-     * marshal
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public void mbil(Bills a) throws JAXBException, FileNotFoundException {
-        Marshaller m = bil.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream(Pfad + "bills.xml");
-        m.marshal(a, f);
-    }
-
-    /**
-     * unmarshal Genres XML out of saved File
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public Genres ugen() throws JAXBException, FileNotFoundException {
-        Unmarshaller m = gen.createUnmarshaller();
-        Genres a = (Genres) m.unmarshal(new FileInputStream(Pfad + "genres.xml"));
-        return a;
-    }
-
-    /**
-     * unmarshal
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public Genres ugen(String s) throws JAXBException {
-        Unmarshaller m = gen.createUnmarshaller();
-        StringReader reader = new StringReader(s);
-        Genres a = (Genres) m.unmarshal(reader);
-        return a;
-    }
-
-    /**
-     * marshal
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public void mgen(Genres a) throws JAXBException, FileNotFoundException {
-        Marshaller m = gen.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream(Pfad + "genres.xml");
-        m.marshal(a, f);
-    }
-
-    /**
-     * unmarshal Messages XML out of saved File
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public Message umes() throws JAXBException, FileNotFoundException {
-        Unmarshaller m = mes.createUnmarshaller();
-        Message a = (Message) m.unmarshal(new FileInputStream(Pfad + "message.xml"));
-        return a;
-    }
-
-    /**
-     * unmarshal
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public Message umes(String s) throws JAXBException {
-        Unmarshaller m = mes.createUnmarshaller();
-        StringReader reader = new StringReader(s);
-        Message a = (Message) m.unmarshal(reader);
-        return a;
-    }
-
-    /**
-     * marshal
-     *
-     * @throws JAXBException
-     */
-    public void mmes(Message a) throws JAXBException, FileNotFoundException {
-        Marshaller m = mes.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream(Pfad + "message.xml");
-        m.marshal(a, f);
-    }
-    /**
-     * movie marshal
      * 
-     * @param m 
-     */
-    public String mmsend(Message.Movie movie) throws JAXBException{
-        Marshaller m = mes.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        StringWriter stringWriter = new StringWriter();
-        m.marshal(movie, stringWriter);
-        return stringWriter.toString();
-    }
-
-    /**
-     * unmarshal Movies XML out of saved File
-     *
+     * @param s
      * @return
-     * @throws JAXBException
+     * @throws ParseException
+     * @throws DatatypeConfigurationException 
      */
-    public Movies umov() throws JAXBException, FileNotFoundException {
-        Unmarshaller m = mov.createUnmarshaller();
-        Movies a = (Movies) m.unmarshal(new FileInputStream(Pfad + "movies.xml"));
-        return a;
-    }
-
-    /**
-     * unmarshal
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public Movies umov(String s) throws JAXBException {
-        Unmarshaller m = mov.createUnmarshaller();
-        StringReader reader = new StringReader(s);
-        Movies a = (Movies) m.unmarshal(reader);
-        return a;
-    }
-
-    /**
-     * marshal
-     *
-     * @return
-     * @throws JAXBException
-     */
-    public void mmov(Movies a) throws JAXBException, FileNotFoundException {
-        Marshaller m = mov.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        FileOutputStream f = new FileOutputStream(Pfad + "movies.xml");
-        m.marshal(a, f);
-    }
-
-    public XMLGregorianCalendar strToXmlGreg(String s) throws ParseException, DatatypeConfigurationException {
-        XMLGregorianCalendar result;
-        Date normaldate;
-        SimpleDateFormat simpleDateFormat;
-        GregorianCalendar gregorianCalendar;
-        
-        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        normaldate = simpleDateFormat.parse(s);
-        gregorianCalendar =
-                (GregorianCalendar) GregorianCalendar.getInstance();
-        gregorianCalendar.setTime(normaldate);
-        result = DatatypeFactory.newInstance().newXMLGregorianCalendar(gregorianCalendar);
-        return result;
+    public XMLGregorianCalendar toDate(String x) throws ParseException, DatatypeConfigurationException {
+        GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
+        gc.setTime(new SimpleDateFormat("dd-MM-yyyy").parse(x));
+        return DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
     }
 }

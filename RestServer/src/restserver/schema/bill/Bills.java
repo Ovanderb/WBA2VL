@@ -6,7 +6,7 @@
 //
 
 
-package restserver.schema.bills;
+package restserver.schema.bill;
 
 import java.util.ArrayList;
 import java.util.List;

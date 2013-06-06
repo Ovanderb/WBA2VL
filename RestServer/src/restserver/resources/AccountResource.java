@@ -11,45 +11,54 @@ import java.text.ParseException;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
-import restserver.schema.accounts.*;
+import restserver.schema.account.list.*;
+import restserver.schema.account.*;
 import restserver.MyMarshal;
 
 @Path("accounts")
 public class AccountResource {
-
-    private MyMarshal m;
-
-    public AccountResource() throws JAXBException {
-        this.m = new MyMarshal();
+    private MyMarshal marshal;
+    private Accounts accounts;
+    private String link;
+    
+    public AccountResource() throws JAXBException, FileNotFoundException {
+        this.marshal = new MyMarshal();
+        this.accounts = marshal.toAccounts();
+        this.link = "http://127.0.0.1:20000/accounts/";
     }
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Accounts Get() throws JAXBException, FileNotFoundException {
-        return this.m.uacc();
+    public Response Get() {
+        Accountlist response = new Accountlist();
+        
+        for(Accounts.Account account : this.accounts.getAccount()) {
+            Accountlist.Account entry = new Accountlist.Account();
+            entry.setId(account.getId());
+            
+            entry.setName(account.getName());
+            entry.setLink(this.link + account.getId());
+            response.getAccount().add(entry);
+        }
+        
+        return Response.status(Response.Status.OK).entity(response).build();
     }
-
+    
     @PUT
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)
-    public Response Put(String s) throws JAXBException, FileNotFoundException {
-        Accounts existingAccounts = this.m.uacc();
-        Accounts newAccounts = this.m.uacc(s);
-        existingAccounts.getAccount().add(newAccounts.getAccount().get(0));
-        this.m.macc(existingAccounts);
+    public Response Put(String xml) throws JAXBException, FileNotFoundException {
+        Accounts income = this.marshal.toAccounts(xml);
+        for(Accounts.Account account : income.getAccount()) { this.accounts.getAccount().add(account); }
+        this.marshal.doAccounts(this.accounts);
         return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response uGet(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
-        Accounts a = this.m.uacc();
-        for (Accounts.Account accs : a.getAccount()) {
-            if (accs.getName().equals(id)) {
-                return Response.status(Response.Status.OK).entity(accs).build();
-            }
-        }
+    public Response uGet(@PathParam("id") Integer id) {
+        for (Accounts.Account account : this.accounts.getAccount()) { if (account.getId().equals(id)) { return Response.status(Response.Status.OK).entity(account).build(); } }
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
@@ -57,53 +66,42 @@ public class AccountResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public Response uPost(
-            @PathParam("id") String id,
+            @PathParam("id") Integer id,
             @QueryParam("age") String age,
             @QueryParam("date") String date,
             @QueryParam("name") String name,
             @QueryParam("mail") String mail,
-            @QueryParam("password") String pass,
-            @QueryParam("genres") int genre,
-            @QueryParam("wishes") int wishes) throws JAXBException, FileNotFoundException, ParseException, DatatypeConfigurationException {
-        Accounts a = this.m.uacc();
-        for (Accounts.Account accs : a.getAccount()) {
-            if (accs.getName().equals(id)) {
-                if (age != null) {
-                    accs.setAge(this.m.strToXmlGreg(age));
-                }
-                if (date != null) {
-                    accs.setDate(this.m.strToXmlGreg(date));
-                }
-                if (mail != null) {
-                    accs.setMail(mail);
-                }
-                if (name != null) {
-                    accs.setName(name);
-                }
-                if (pass != null) {
-                    accs.setPassword(pass);
-                }
-                this.m.macc(a);
+            @QueryParam("password") String password) throws JAXBException, FileNotFoundException, ParseException, DatatypeConfigurationException {
+        
+        for (Accounts.Account account : this.accounts.getAccount()) {
+            if (account.getId().equals(id)) {
+                if (age != null) { account.setAge(this.marshal.toDate(age)); }
+                if (date != null) { account.setDate(this.marshal.toDate(date)); }
+                if (mail != null) { account.setMail(mail); }
+                if (name != null) { account.setName(name); }
+                if (password != null) { account.setPassword(password); }
+                this.marshal.doAccounts(this.accounts);
                 return Response.status(Response.Status.OK).build();
             }
         }
+        
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public Response uDel(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
-        Accounts a = this.m.uacc();
+    public Response uDel(@PathParam("id") Integer id) throws JAXBException, FileNotFoundException {
         int i = 0;
-        for (Accounts.Account accs : a.getAccount()) {
-            if (accs.getName().equals(id)) {
-                a.getAccount().remove(i);
-                this.m.macc(a);
+        
+        for (Accounts.Account account : this.accounts.getAccount()) {
+            if (account.getId().equals(id)) {
+                this.accounts.getAccount().remove(i);
+                this.marshal.doAccounts(this.accounts);
                 return Response.status(Response.Status.OK).build();
-            }
-            i++;
+            } i++;
         }
+        
         return Response.status(Response.Status.NOT_FOUND).build();
     }
 }

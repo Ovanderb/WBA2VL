@@ -4,6 +4,7 @@
  */
 package restserver.resources;
 
+import restserver.schema.genre.Genres;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.FileNotFoundException;
@@ -13,31 +14,30 @@ import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import restserver.MyMarshal;
-import restserver.schema.genres.*;
 
 @Path("genres")
 public class GenreResource {
     private FileOutputStream f;
-    private MyMarshal m;
+    private MyMarshal marshal;
 
     public GenreResource() throws JAXBException {
-        this.m = new MyMarshal();
+        this.marshal = new MyMarshal();
     }
     
     @GET
     @Produces(MediaType.APPLICATION_XML)
     public Genres Get() throws JAXBException, FileNotFoundException {
-        return this.m.ugen();
+        return this.marshal.toGenres();
     }
 
     @PUT
     @Consumes( MediaType.APPLICATION_XML )
     @Produces(MediaType.APPLICATION_XML)
     public Response Put(String s) throws FileNotFoundException, JAXBException {
-        Genres existingobj = this.m.ugen();
-        Genres newobj = this.m.ugen(s);
+        Genres existingobj = this.marshal.toGenres();
+        Genres newobj = this.marshal.toGenres(s);
         existingobj.getGenre().add(newobj.getGenre().get(0));
-        this.m.mgen(existingobj);
+        this.marshal.doGenres(existingobj);
         return Response.status(201).build();
     }
 
@@ -45,7 +45,7 @@ public class GenreResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public Genres.Genre uGet(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
-        Genres a = this.m.ugen();
+        Genres a = this.marshal.toGenres();
         for (Genres.Genre o: a.getGenre()){
             if(o.getName().equals(id)){
                 return o;
@@ -61,13 +61,13 @@ public class GenreResource {
             @PathParam("genrename") String id,
             @QueryParam("newname") String name
             ) throws JAXBException, FileNotFoundException, ParseException, DatatypeConfigurationException {
-        Genres a = this.m.ugen();
+        Genres a = this.marshal.toGenres();
         for (Genres.Genre accs : a.getGenre()) {
             if (accs.getName().equals(id)) {
                 if (name != null) {
                     accs.setName(name);
                 }
-                this.m.mgen(a);
+                this.marshal.doGenres(a);
                 return Response.status(Response.Status.OK).build();
             }
         }
@@ -78,12 +78,12 @@ public class GenreResource {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
     public Response uDelete(@PathParam("id") String id) throws JAXBException, FileNotFoundException {
-        Genres a = this.m.ugen();
+        Genres a = this.marshal.toGenres();
         int i = 0;
         for (Genres.Genre accs: a.getGenre()){
             if(accs.getName().equals(id)){
                 a.getGenre().remove(i);
-                this.m.mgen(a);
+                this.marshal.doGenres(a);
                 return Response.status(200).build();
             }
             i++;

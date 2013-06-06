@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // �nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.07 um 07:21:10 PM CEST 
+// Generiert: 2013.05.07 um 07:22:39 PM CEST 
 //
 
 
-package restserver.schema.actors;
+package restserver.schema.movie;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -37,19 +37,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Actors }
+     * Create an instance of {@link Movies }
      * 
      */
-    public Actors createActors() {
-        return new Actors();
+    public Movies createMovies() {
+        return new Movies();
     }
 
     /**
-     * Create an instance of {@link Actors.Actor }
+     * Create an instance of {@link Movies.Movie }
      * 
      */
-    public Actors.Actor createActorsActor() {
-        return new Actors.Actor();
+    public Movies.Movie createMoviesMovie() {
+        return new Movies.Movie();
+    }
+
+    /**
+     * Create an instance of {@link Movies.Movie.Stocks }
+     * 
+     */
+    public Movies.Movie.Stocks createMoviesMovieStocks() {
+        return new Movies.Movie.Stocks();
+    }
+
+    /**
+     * Create an instance of {@link Movies.Movie.Stocks.Stock }
+     * 
+     */
+    public Movies.Movie.Stocks.Stock createMoviesMovieStocksStock() {
+        return new Movies.Movie.Stocks.Stock();
     }
 
 }

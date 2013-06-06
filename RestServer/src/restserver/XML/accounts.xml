@@ -1,55 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <accounts backlink="/accounts">
-    <account id="0" name="newnew" mail="foo@bar.de" password="oihfdoehf">
+    <account id="0" name="testNutzer" mail="test@nutzer.de" password="test">
         <genres>
+            <genre id="0"/>
             <genre id="1"/>
-            <genre id="5"/>
-            <genre id="4"/>
+            <genre id="2"/>
             <genre id="3"/>
         </genres>
         <wishes>
-            <movie id="45"/>
-            <movie id="34"/>
-            <movie id="53"/>
-        </wishes>
-    </account>
-    <account id="1" name="foo" mail="foo@acc.de" password="foofoo">
-        <genres>
-            <genre id="1"/>
-            <genre id="5"/>
-            <genre id="4"/>
-            <genre id="3"/>
-        </genres>
-        <wishes>
-            <movie id="45"/>
-            <movie id="34"/>
-            <movie id="53"/>
-        </wishes>
-    </account>
-    <account id="2" name="bar" mail="bar@acc.de" password="barbar">
-        <genres>
-            <genre id="1"/>
-            <genre id="5"/>
-            <genre id="4"/>
-            <genre id="3"/>
-        </genres>
-        <wishes>
-            <movie id="45"/>
-            <movie id="34"/>
-            <movie id="53"/>
-        </wishes>
-    </account>
-    <account id="3" name="frefe" mail="foo@bar.de" password="oihfdoehf">
-        <genres>
-            <genre id="1"/>
-            <genre id="5"/>
-            <genre id="4"/>
-            <genre id="3"/>
-        </genres>
-        <wishes>
-            <movie id="45"/>
-            <movie id="34"/>
-            <movie id="53"/>
+            <movie id="0"/>
         </wishes>
     </account>
 </accounts>

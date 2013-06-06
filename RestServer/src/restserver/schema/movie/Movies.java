@@ -6,7 +6,7 @@
 //
 
 
-package restserver.schema.movies;
+package restserver.schema.movie;
 
 import java.util.ArrayList;
 import java.util.List;

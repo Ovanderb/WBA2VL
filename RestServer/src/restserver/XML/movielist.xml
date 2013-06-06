@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <movielist>
-    <movie id="45" name="Rambo" link="http://www.restful.de/movie/45/" />
+    <movie id="0" name="Rambo" link="http://127.0.0.1:20000/movies/0/" />
 </movielist>

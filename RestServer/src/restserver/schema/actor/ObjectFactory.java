@@ -2,11 +2,11 @@
 // Diese Datei wurde mit der JavaTM Architecture for XML Binding(JAXB) Reference Implementation, v2.2.6 generiert 
 // Siehe <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // �nderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2013.05.07 um 07:21:36 PM CEST 
+// Generiert: 2013.05.07 um 07:21:10 PM CEST 
 //
 
 
-package restserver.schema.genres;
+package restserver.schema.actor;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -37,19 +37,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Genres }
+     * Create an instance of {@link Actors }
      * 
      */
-    public Genres createGenres() {
-        return new Genres();
+    public Actors createActors() {
+        return new Actors();
     }
 
     /**
-     * Create an instance of {@link Genres.Genre }
+     * Create an instance of {@link Actors.Actor }
      * 
      */
-    public Genres.Genre createGenresGenre() {
-        return new Genres.Genre();
+    public Actors.Actor createActorsActor() {
+        return new Actors.Actor();
     }
 
 }
