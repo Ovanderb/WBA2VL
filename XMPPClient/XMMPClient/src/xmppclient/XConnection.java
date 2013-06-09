@@ -22,7 +22,7 @@ public class XConnection implements MessageListener{
     XMPPConnection connection;
 
     private void login(String userName, String password) throws XMPPException {
-        ConnectionConfiguration config = new ConnectionConfiguration("localhost", 5222, "Home");
+        ConnectionConfiguration config = new ConnectionConfiguration("localhost", 5222, "");
         connection = new XMPPConnection(config);
         connection.connect();
         connection.login(userName, password);

@@ -18,7 +18,7 @@ public class XMPPPub {
     public static void main(String args[]) throws XMPPException, IOException {
         // declare variables
         XMPPConnection.DEBUG_ENABLED = true;
-        XConnection c = new XConnection("testuser", "password");
+        XConnection c = new XConnection("testsub", "testsub");
         
         PublishSubscribe pubsub = new PublishSubscribe(c.connection);
        
@@ -31,18 +31,24 @@ public class XMPPPub {
         LeafNode movienews = pubsub.getManager().getNode("movienews");
         String msg;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String xmlstr ="<movie id=\"1\" name=\"foo\" date=\"2000-01-01+01:00\" image=\"http://w.w.de\" link=\"http://w.w.de\">\n" +
-                       "        <discription>Lorem Ipsum</discription>\n" +
-                       "    </movie>";
+        String xmlstr ="" +
+"<bills>\n" +
+"  <bill id=\"0\" cash=\"true\" bank=\"Deutsche Postbank AG\" account=\"0\" code=\"59266874\" owner=\"testNutzer\" date=\"2013/22/05\">\n" +
+"    <movie name=\"rambo\" price=\"5.00\"/>\n" +
+"  </bill>\n" +
+"</bills>";
         SimplePayload payload = new SimplePayload(null,null,xmlstr);
-        PayloadItem<SimplePayload> paylitm = new PayloadItem<>(null,payload);
+        PayloadItem<SimplePayload> paylitm = new PayloadItem<>("snack",payload);
         movienews.publish(paylitm);
         
-        String xmlstr2 ="<movie id=\"2\" name=\"bar\">\n" +
-                       "        <discription>Doloer et amet</discription>\n" +
-                       "    </movie>";
+        String xmlstr2 ="" +
+"<bills>\n" +
+"  <bill id=\"1\" cash=\"true\" bank=\"d Postbank AG\" account=\"0\" code=\"34242342\" owner=\"user\" date=\"2013/22/05\">\n" +
+"    <movie name=\"bhfg\" price=\"5.00\"/>\n" +
+"  </bill>\n" +
+"</bills>";
         SimplePayload payload2 = new SimplePayload(null,null,xmlstr2);
-        PayloadItem paylitm2 = new PayloadItem(null,payload2);
+        PayloadItem paylitm2 = new PayloadItem("schnubbel",payload2);
         movienews.publish(paylitm2);
         
         
