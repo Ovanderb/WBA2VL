@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<actors>
-  <actor id="0" name="Bread Pit"/>
-  <actor id="1" name="Angelina Juli"/>
+<actors id="2" add="/actors" cancel="">
+  <actor id="0" name="Bread Pit" edit="/actors/0" delete="/actors/0"/>
+  <actor id="1" name="Angelina Juli" edit="/actors/1" delete="/actors/1"/>
 </actors>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bills>
-  <bill id="0" cash="true" bank="Deutsche Postbank AG" account="0" code="59266874" owner="testNutzer" date="2013/22/05">
-    <movie name="rambo" price="5.00"/>
+<bills id="1" add="/bills" cancel="">
+  <bill id="0" owner="John Smith" bank="Deutsche Bank AG" code="375-605-92" account="5844016" date="2013-06-07" edit="/bills/0" cancel="/bills/0">
+    <address>Am weissen Strand 9
+51375 Leverkusen
+    </address>
+	<movies>
+		<movie name="Rambo" price="5.0"/>
+	</movies>
   </bill>
 </bills>

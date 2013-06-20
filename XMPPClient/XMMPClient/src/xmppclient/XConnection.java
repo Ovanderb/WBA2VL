@@ -8,8 +8,6 @@ import java.util.Collection;
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
-import org.jivesoftware.smack.Roster;
-import org.jivesoftware.smack.RosterEntry;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.packet.Message;
@@ -21,8 +19,8 @@ public class XConnection implements MessageListener{
 
     XMPPConnection connection;
 
-    private void login(String userName, String password) throws XMPPException {
-        ConnectionConfiguration config = new ConnectionConfiguration("localhost", 5222, "");
+    private void login(String userName, String password, int port) throws XMPPException {
+        ConnectionConfiguration config = new ConnectionConfiguration("localhost", port, "");
         connection = new XMPPConnection(config);
         connection.connect();
         connection.login(userName, password);
@@ -45,17 +43,7 @@ public class XConnection implements MessageListener{
         connection.disconnect();
     }
 
-    public void displayBuddyList() {
-        Roster roster = connection.getRoster();
-        Collection<RosterEntry> entries = roster.getEntries();
-
-        System.out.println("\n\n" + entries.size() + " buddy(ies):");
-        for (RosterEntry r : entries) {
-            System.out.println(r.getUser());
-        }
-    }
-
-    public XConnection(String userName, String password) throws XMPPException {
-        this.login(userName, password);
+    public XConnection(String userName, String password, int port) throws XMPPException {
+        this.login(userName, password, port);
     }
 }

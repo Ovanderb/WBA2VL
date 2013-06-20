@@ -1,6 +1,7 @@
-package xmppclient;
+package restserver;
 
 import java.util.Date;
+import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.PayloadItem;
@@ -15,18 +16,19 @@ public class XMPPPub {
     XConnection c;
     PublishSubscribe pubsub;
 
-    public XMPPPub(String name, String pass, PublishSubscribe pubsub) throws XMPPException {
-        this.c = new XConnection(name, pass, 5222);
+    public XMPPPub(String name, String pass) throws XMPPException {
+        //TODO Notfalls das Debugging wieder einschalten
+        //XMPPConnection.DEBUG_ENABLED = true;
+        this.c = new XConnection(name, pass,5222);
         this.pubsub = new PublishSubscribe(this.c.connection);
     }
 
     public void publishItem(String xmlstr) throws XMPPException {
         Date date = new Date();
-        long now = date.getTime();
-
+        System.out.println(xmlstr);
         LeafNode movienews = pubsub.getManager().getNode("movienews");
         SimplePayload payload = new SimplePayload(null, null, xmlstr);
-        PayloadItem<SimplePayload> paylitm = new PayloadItem<>(String.valueOf(now), payload);
+        PayloadItem<SimplePayload> paylitm = new PayloadItem<>(String.valueOf(date.getTime()), payload);
         movienews.publish(paylitm);
     }
     /***************************************************************

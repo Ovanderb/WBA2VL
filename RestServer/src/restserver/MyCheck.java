@@ -11,7 +11,7 @@ public class MyCheck {
     }
     
     public boolean doCheck() {
-        String[] files = {"accounts", "actors", "bills", "genres", "message", "movies"};
+        String[] files = {"accounts", "actors", "bills", "genres", "messages", "movies"};
         String path = System.getProperty("user.dir") + "/xml";
         File file = new File(path);
         boolean ok = true;

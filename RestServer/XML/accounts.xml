@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<accounts backlink="/accounts">
-    <account id="0" name="testNutzer" mail="test@nutzer.de" password="test">
-        <genres>
-            <genre id="0"/>
-            <genre id="1"/>
-            <genre id="2"/>
-            <genre id="3"/>
-        </genres>
-        <wishes>
-            <movie id="0"/>
-        </wishes>
-    </account>
+<accounts id="1" add="/accounts" cancel="">
+  <account id="0" name="John Smith" bank="Deutsche Bank AG" code="375-605-92" account="5844016" mail="john.smith@yahoo.de" password="test" edit="/accounts/0" delete="/accounts/0">
+    <address>
+      Am weissen Strand 9
+      51375 Leverkusen
+    </address>
+    <genres>
+      <genre id="1"/>
+      <genre id="3"/>
+      <genre id="4"/>
+      <genre id="5"/>
+    </genres>
+    <wishes>
+      <movie id="1"/>
+    </wishes>
+  </account>
 </accounts>

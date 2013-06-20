@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<messages>
+  <message date="2013-06-08">
+    <movie id="1" name="Rambo" date="2013-06-08" link="http://localhost:20000/movies/1">
+      <discription>Hier steht eine Inhaltsangabe zum Film...</discription>
+    </movie>
+  </message>
+</messages>

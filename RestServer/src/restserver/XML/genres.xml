@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genres>
-  <genre id="0" name="Action"/>
-  <genre id="1" name="Fantasy"/>
-  <genre id="2" name="Science Fiction"/>
-  <genre id="3" name="Comedy"/>
-  <genre id="4" name="Animation"/>
-  <genre id="5" name="Horro"/>
-  <genre id="6" name="Thriller"/>
-  <genre id="7" name="Splatter"/>
-  <genre id="8" name="Drama"/>
-  <genre id="9" name="Documentary"/>
-  <genre id="10" name="Love"/>
+<genres id="11" add="/genres" cancel="">
+  <genre id="0" name="Action" edit="/genres/0" delete="/genres/0"/>
+  <genre id="1" name="Fantasy" edit="/genres/1" delete="/genres/1"/>
+  <genre id="2" name="Science Fiction" edit="/genres/2" delete="/genres/2"/>
+  <genre id="3" name="Comedy" edit="/genres/3" delete="/genres/3"/>
+  <genre id="4" name="Animation" edit="/genres/4" delete="/genres/4"/>
+  <genre id="5" name="Horro" edit="/genres/5" delete="/genres/5"/>
+  <genre id="6" name="Thriller" edit="/genres/6" delete="/genres/6"/>
+  <genre id="7" name="Splatter" edit="/genres/7" delete="/genres/7"/>
+  <genre id="8" name="Drama" edit="/genres/8" delete="/genres/8"/>
+  <genre id="9" name="Documentary" edit="/genres/9" delete="/genres/9"/>
+  <genre id="10" name="Love" edit="/genres/10" delete="/genres/10"/>
 </genres>
