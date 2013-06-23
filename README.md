@@ -1,4 +1,4 @@
-WBA2VL
+WBA2 Phase 2
 ======
 
 Aufbau eines News Pushing Systems für einen Online Videothek im Rahmen des
@@ -12,29 +12,14 @@ Zusätzlich eine Möglichkeit für Operator neue Filme und Daten einstellen zu k
 ## Vorraussetzungen
 Unter JDK 1.7 / 7 entwickelt. Nicht mit JRE 6 getestet.
 
-## Infrastruktur:
-###Server: 
-- Webserver ( HTTP ) + IP-Stack Server ( HTTP )  
-Hierbei werden wir auf bestehende Software in Form des offenen Webservers Apache zurückgreifen.  
-Dieser dient einerseits dazu, den IP Stack für bestehende Cients zu halten.( Dient der Addressierung der  
-Push Notification. Dieses Problem könnte auch über eine Google Api gelöst werden. Allerdings müssten dann  
-Services in der Google Cloud mit eingebunden werden, wogegen wir uns für dieses Projekt entschieden haben. 
+- Admin Client
+Erster Versuch eines HTTP Clients für das Projekt mittels Swing. Später verworfen
 
-- Streaming Server ( RTP )
-- Push Server ( XMPP )  
-Hierbei werden wir auf bestehende Software in Form des offenen XMPP Servers Openfire zurückgreifen.  
-[http://www.igniterealtime.org/projects/openfire/index.jsp](http://www.igniterealtime.org/projects/openfire/index.jsp)
+- Outtake
+Administration des REST Servers
 
+- Rest Server
+REST HTTP Server mit XMPP Funktionalität
 
-
-###Client:
-- Android App mit XMPP Client
-- Java Swing App
-
-## Problemstellung:  
-- Addresshandling
-- Realisierung Push Service
-- Synch bei Anmeldung
-- Tomcat ?
-
-
+- XMPP
+XMPP Client
