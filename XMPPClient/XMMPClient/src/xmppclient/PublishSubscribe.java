@@ -4,10 +4,9 @@
  */
 package xmppclient;
 
-import java.util.Iterator;
+import javax.xml.parsers.ParserConfigurationException;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
-import org.jivesoftware.smackx.packet.DiscoverItems;
 import org.jivesoftware.smackx.pubsub.AccessModel;
 import org.jivesoftware.smackx.pubsub.ConfigureForm;
 import org.jivesoftware.smackx.pubsub.FormType;
@@ -24,12 +23,16 @@ import org.jivesoftware.smackx.pubsub.PublishModel;
 public class PublishSubscribe {
 
     PubSubManager mgr;
+    XMPPConnection connection;
     String rootnode = "root";
+    private XObj xobj;
     int MAXITEMS = 10;
     
-    public PublishSubscribe(XMPPConnection connection) throws XMPPException {
+    public PublishSubscribe(XMPPConnection connection,XObj x) throws XMPPException {
         mgr = new PubSubManager(connection);
-        //this.checknodes(rootnode, 0);
+        this.xobj = x;
+        this.connection = connection;
+        this.checknodes(rootnode, 0);
 
     }
 
@@ -37,10 +40,17 @@ public class PublishSubscribe {
         return this.mgr;
     }
     
-    public void checknodes(String node, int Level) throws XMPPException {
+    public XMPPConnection getConnection(){
+        return this.connection;
+    }
+    
+    
+    
+    private void checknodes(String node, int Level) throws XMPPException {
         try {
             mgr.getNode("root");
         } catch (XMPPException e) {
+            System.out.println("Can't find root node.");
             CollectionNode col = this.newCollection(rootnode);
         }
         try {
@@ -52,17 +62,7 @@ public class PublishSubscribe {
             mgr.getNode("movienews");
         }catch (XMPPException e) {
             LeafNode lf = this.newleaf("movienews","messages");
-        }
-        Iterator<DiscoverItems.Item> existingnodes = mgr.discoverNodes(node).getItems();
-        while (existingnodes.hasNext()) {
-            String thisnode = existingnodes.next().getNode();
-            String out = ":";
-            for(int i = 0;i<Level;i++){
-                out +="  ";
-            }
-            System.out.println(out+"|=> " + thisnode);
-            this.checknodes(thisnode, Level + 1);
-        }
+        }        
     }
 
     public LeafNode newleaf(String name) throws XMPPException {
@@ -135,4 +135,44 @@ public class PublishSubscribe {
             return (CollectionNode) mgr.createNode(name, form);
         }
     }
+    
+    /**
+     * Funktion um sich in eine Node einzutragen.
+     * @param name
+     * @param panel
+     * @throws XMPPException
+     * @throws ParserConfigurationException 
+     */
+    public void subscribe(XObj xobj) throws XMPPException, ParserConfigurationException {
+        System.out.println("\nSubscribe Action performed");
+        LeafNode node = mgr.getNode(xobj.getActuallnode());
+        System.out.println("Got node");
+        xobj.setItemListener(new ItemListener(xobj));
+        node.addItemEventListener(xobj.getItemListener());
+        System.out.println("Added Itemlistener");
+        node.subscribe(xobj.getJabberid());
+        System.out.println("Subscribed node");
+    }
+    
+    /**
+     * Funktion, um sich aus einer Node auszuschreiben
+     * @param name
+     * @param panel
+     * @throws XMPPException
+     * @throws ParserConfigurationException 
+     */
+    public void unsubscribe(XObj xobj) throws XMPPException, ParserConfigurationException {
+        System.out.println("\nUnsubscribe Action performed");
+        LeafNode node = mgr.getNode(xobj.getActuallnode());
+        System.out.println("Got node");
+        node.removeItemEventListener(xobj.getItemListener());
+        System.out.println("Removed Itemlistener");
+        node.unsubscribe(xobj.getJabberid());
+        System.out.println("Unsubscribed node");
+    }
+    
+    public void disconnect() {
+        this.connection.disconnect();
+    }
+
 }

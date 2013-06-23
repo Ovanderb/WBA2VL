@@ -4,7 +4,6 @@
  */
 package xmppclient;
 
-import java.util.Collection;
 import org.jivesoftware.smack.Chat;
 import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.MessageListener;
@@ -19,19 +18,13 @@ public class XConnection implements MessageListener{
 
     XMPPConnection connection;
 
-    private void login(String userName, String password, int port) throws XMPPException {
-        ConnectionConfiguration config = new ConnectionConfiguration("localhost", port, "");
+    private void login(String userName, String password, int port, String host) throws XMPPException {
+        ConnectionConfiguration config = new ConnectionConfiguration(host, port, "");
         connection = new XMPPConnection(config);
         connection.connect();
         connection.login(userName, password);
     }
 
-    public void sendMessage(String message, String to) throws XMPPException {
-        Chat chat = connection.getChatManager().createChat(to, this);
-        chat.sendMessage(message);
-    }
-
-    
     @Override
     public void processMessage(Chat chat, Message message) {
         if (message.getType() == Message.Type.chat) {
@@ -43,7 +36,15 @@ public class XConnection implements MessageListener{
         connection.disconnect();
     }
 
-    public XConnection(String userName, String password, int port) throws XMPPException {
-        this.login(userName, password, port);
+    public void setConnection(XMPPConnection connection) {
+        this.connection = connection;
+    }
+
+    public XMPPConnection getConnection() {
+        return connection;
+    }
+
+    public XConnection(String userName, String password, int port, String host) throws XMPPException {
+        this.login(userName, password, port, host);
     }
 }

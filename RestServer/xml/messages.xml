@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<messages>
-  <message date="2013-06-08">
-    <movie id="1" name="Rambo" date="2013-06-08" link="http://localhost:20000/movies/1">
-      <discription>Hier steht eine Inhaltsangabe zum Film...</discription>
-    </movie>
-  </message>
-</messages>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><messages><message date="2013-06-08"><movie date="2013-06-08" id="1" link="http://localhost:20000/movies/1" name="Rambo"><discription>Hier steht eine Inhaltsangabe zum Film...</discription></movie></message><message date="2013-05-02"><movie date="2013-05-02" id="2" link="http://localhost:20000/movies/2" name="Stirb Langsam"><discription>Der Bruce halt.</discription></movie></message><message date="2013-06-23"><movie date="2013-06-19" id="1" link="http://localhost:20000/movies/1" name="Schauen wir mal"><discription>What a man</discription></movie></message></messages>

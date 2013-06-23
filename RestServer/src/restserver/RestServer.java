@@ -12,10 +12,11 @@ public class RestServer {
     
     static public void main(String[] args) throws IOException, FileNotFoundException, JAXBException {
         if(new MyCheck().doCheck()) {
-            HttpServer server = HttpServerFactory.create(RestServer.HOST);
+            HttpServer server = HttpServerFactory.create(RestServer.HOST); // Einfacher HTTP Server von Java
             server.start();
             JOptionPane.showMessageDialog(null, "Ende");
             server.stop(0);
+            System.exit(0);
         }
     }
 }

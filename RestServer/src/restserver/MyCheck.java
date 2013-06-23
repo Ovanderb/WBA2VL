@@ -6,10 +6,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Klasse um die XML Dateien erstmalig in das Arbeitsverzeichnis zu kopieren.
+ * 
+ * @author Olli
+ */
 public class MyCheck {
     public MyCheck() {
     }
     
+    /**
+     * Prüft ob das Arbeitsverzeichnis schon vorhanden ist. Ansonsten werden die
+     * Vorlage XML Dateien kopiert.
+     * @return Boolean
+     */
     public boolean doCheck() {
         String[] files = {"accounts", "actors", "bills", "genres", "messages", "movies"};
         String path = System.getProperty("user.dir") + "/xml";
@@ -20,6 +30,10 @@ public class MyCheck {
         return ok;
     }
     
+    /**
+     * Kopiert die Dateien aus dem JER ins Arbeitsverzeichnis
+     * @return Boolean
+     */
     private boolean doCopy(String from, String to) {
         try {
             InputStream i = this.getClass().getResourceAsStream(from);

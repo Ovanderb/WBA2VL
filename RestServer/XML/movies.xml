@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<movies id="1" add="/movies" cancel="">
-  <movie id="0" name="Rambo" date="2013-06-08" length="120" price="5.0" regiseur="Tim Burton" edit="/movies/0" delete="/movies/0">
-    <discription>Hier steht eine Inhaltsangabe zum Film...</discription>
-    <actors>
-      <actor id="0"/>
-    </actors>
-    <genres>
-      <genre id="0"/>
-    </genres>
-    <stocks>
-      <stock id="1" format="dvd" lent="true" retour="2013-09-12"/>
-      <stock id="2" format="dvd" lent="true" retour="2013-09-12"/>
-    </stocks>
-  </movie>
-</movies>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><movies add="/movies" cancel="" id="2"><movie date="2013-06-08" delete="/movies/0" edit="/movies/0" id="0" length="120" name="Rambo" price="5.0" regiseur="Tim Burton"><discription>Hier steht eine Inhaltsangabe zum Film...</discription><actors><actor id="0"/></actors><genres><genre id="0"/></genres><stocks><stock format="dvd" id="1" lent="true" retour="2013-09-12"/><stock format="dvd" id="2" lent="true" retour="2013-09-12"/></stocks></movie><movie date="2013-06-19" delete="/movies/1" edit="/movies/1" id="1" length="120" name="Schauen wir mal" price="5.0" regiseur="Regiseur"><discription>What a man</discription><actors><actor id="0"/></actors><genres><genre id="0"/></genres><stocks><stock format="DVD" id="110" lent="false" retour="2013-06-23"/></stocks></movie></movies>

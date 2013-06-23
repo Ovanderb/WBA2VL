@@ -84,6 +84,7 @@ public class MessageResource extends Resource {
             this.messages.getMessage().add(this.message);
             StringWriter sw = new StringWriter();
             Marshaller marsh = this.marshal.getMessageMarshaller();
+            marsh.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             /*
              * Wichtig hierbei ist es, dass der XML String keinen XML Deklaration
              * hat. Sonst funktioniert der XMPP publish nicht richtig.

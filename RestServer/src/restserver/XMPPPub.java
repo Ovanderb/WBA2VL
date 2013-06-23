@@ -1,7 +1,6 @@
 package restserver;
 
 import java.util.Date;
-import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.PayloadItem;
@@ -17,7 +16,6 @@ public class XMPPPub {
     PublishSubscribe pubsub;
 
     public XMPPPub(String name, String pass) throws XMPPException {
-        //TODO Notfalls das Debugging wieder einschalten
         //XMPPConnection.DEBUG_ENABLED = true;
         this.c = new XConnection(name, pass,5222);
         this.pubsub = new PublishSubscribe(this.c.connection);
@@ -31,8 +29,10 @@ public class XMPPPub {
         PayloadItem<SimplePayload> paylitm = new PayloadItem<>(String.valueOf(date.getTime()), payload);
         movienews.publish(paylitm);
     }
+    
+    
     /***************************************************************
-     * Main Funktion diente zum Testen des Publischen eines Items 
+     * Main Funktion diente zum Testen des Publishen eines Items 
      * Insbesondere wegen den Problemen, mehrere Items wieder aus vom Server
      * zu ziehen.
      * 
