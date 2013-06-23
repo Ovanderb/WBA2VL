@@ -12,14 +12,14 @@ Zusätzlich eine Möglichkeit für Operator neue Filme und Daten einstellen zu k
 ## Vorraussetzungen
 Unter JDK 1.7 / 7 entwickelt. Nicht mit JRE 6 getestet.
 
-- Admin Client
+- Admin Client  
 Erster Versuch eines HTTP Clients für das Projekt mittels Swing. Später verworfen
 
-- Outtake
+- Outtake  
 Administration des REST Servers
 
-- Rest Server
+- Rest Server  
 REST HTTP Server mit XMPP Funktionalität
 
-- XMPP
+- XMPP  
 XMPP Client
